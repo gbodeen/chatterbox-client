@@ -9,15 +9,23 @@ var MessagesView = {
   render: function () {
     setInterval(Parse.readAll.bind(Parse, (data) => {
 
-      for (let obj of data['results']) {
-        if (obj.hasOwnProperty('text')) {
-          $('#chats').append(MessageView.render({
-            text: obj.text,
-            username: obj.username
-          }));
+      for (let i = data.results.length - 1; i >= 0; i--) {
+        let obj = data.results[i];
+        if (!obj.hasOwnProperty('text') ||
+          !obj.hasOwnProperty('username') ||
+          !obj.hasOwnProperty('roomname')) {
+          continue;
+        }
+
+        if (obj.roomname !== $('#room-select').val()) {
+          continue;
+        }
+
+
+        if ($(`#${obj.objectId}`).length === 0) {
+          $('#chats').prepend(MessageView.render(obj));
         }
       }
-
     }), 1000);
   }
 
