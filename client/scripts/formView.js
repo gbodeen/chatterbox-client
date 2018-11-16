@@ -13,10 +13,11 @@ var FormView = {
     let message = {
       username: 'CornerTeam',
       text: '',
-      roomname: 'Lobby'
+      roomname: ''
     };
 
     message.text = $('#message').val();
+    message.roomname = $('#room-select').val();
 
     Parse.create(message);
     console.log('click!', message);
