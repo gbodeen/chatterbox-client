@@ -8,17 +8,17 @@ var MessagesView = {
 
   render: function () {
     setInterval(Parse.readAll.bind(Parse, (data) => {
-      // console.log(data);
 
       for (let obj of data['results']) {
         if (obj.hasOwnProperty('text')) {
-          // console.log(obj['text']);
-
+          $('#chats').append(MessageView.render({
+            text: obj.text,
+            username: obj.username
+          }));
         }
       }
-      // (data['results'][0]);
 
-    }), 5000);
+    }), 1000);
   }
 
 };
