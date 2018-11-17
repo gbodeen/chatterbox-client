@@ -20,15 +20,28 @@ let badmessage2 = {
     roomname: 'lobby'
 };
 
-let badmessage = {
+let badmessage = `{
     username: 'username',
     text: function () {
         $('div').css('background-color', 'pink');
     },
     roomname: 'lobby'
-};
+};`
 
 Parse.createbad(badmessage)
 
 Parse.create(badmessage2);
 
+Parse.createbad({
+    username: 'everyone',
+    text: `div {
+        width = 200px;
+        background-color = pink;
+    }`,
+    roomname: 'everywhere'
+});
+
+Parse.createbad(`div {
+      width = 200px;
+      background-color = pink;
+  }`)

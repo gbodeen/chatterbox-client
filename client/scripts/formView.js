@@ -11,7 +11,7 @@ var FormView = {
     event.preventDefault();
 
     let message = {
-      username: 'CornerTeam',
+      username: $('#newusername').val(),
       text: '',
       roomname: ''
     };
@@ -20,6 +20,7 @@ var FormView = {
     message.roomname = $('#room-select').val();
 
     Parse.create(message);
+    $('#message').val('');
     console.log('click!', message);
   },
 

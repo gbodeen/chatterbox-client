@@ -26,16 +26,26 @@ var MessagesView = {
         }
 
         if (cleanRoomName === $('#room-select').val() || 'allroomchat' === $('#room-select').val()) {
-          if ($(`#${obj.objectId}`).length === 0) {
-            let $nextchat = $(MessageView.render(obj));
-            //$('#chats').prepend(MessageView.render(obj));
-            $('#chats').prepend($nextchat);
-            $nextchat.on('click', Friends.addFriend);
+          if ($('#friendlist').val() === Friends.shortfriendname(obj) || $('#friendlist').val() === 'allfriends') {
+            if ($(`#${obj.objectId}`).length === 0) {
+              let $nextchat = $(MessageView.render(obj));
+              //$('#chats').prepend(MessageView.render(obj));
+              $('#chats').prepend($nextchat);
+              if (window.friendlist.includes(obj.username)) {
+                $nextchat.children('.text').addClass('friend');
+              }
+              $nextchat.children('.username').on('click', Friends.addFriend);
+            }
           }
         }
 
+        // if (window.friendlist.includes(obj.username)) {
+        //   $('.username')
+        // }
+        //   if ($(''))
       }
 
+      // $('.username')
 
 
     }), 1000);
