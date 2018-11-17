@@ -6,6 +6,10 @@ var RoomsView = {
   initialize: function () {
     RoomsView.$button.on('click', RoomsView.addRoomClick);
     RoomsView.$select.on('change', RoomsView.selectRoom)
+
+    // <select id="room-select">
+    //     <option value="Lobby">Lobby</option>
+
   },
 
   addRoomClick: function (event) {
@@ -35,9 +39,9 @@ var RoomsView = {
     // $(`[value="${roomName}"]`).attr('selected', 'true');
   },
 
-  render: function () {
-    // show tweets from that room
-  }
+  render: _.template(`
+    <option value="<%- roomname %>"><%- roomname %></option>
+  `)
 
 
 };

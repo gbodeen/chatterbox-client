@@ -17,14 +17,21 @@ var MessagesView = {
           continue;
         }
 
-        if (obj.roomname !== $('#room-select').val()) {
-          continue;
+        let roomname = obj.roomname.replace(/\W/g, '');
+        if ($(`[value="${roomname}"]`).length === 0) {
+          $('#room-select').append(RoomsView.render({ roomname }));
+        }
+
+        if (roomname === $('#room-select').val() || 'allroomchat' === $('#room-select').val()) {
+          if ($(`#${obj.objectId}`).length === 0) {
+            $('#chats').prepend(MessageView.render(obj));
+          }
         }
 
 
-        if ($(`#${obj.objectId}`).length === 0) {
-          $('#chats').prepend(MessageView.render(obj));
-        }
+
+
+
       }
     }), 1000);
   }
