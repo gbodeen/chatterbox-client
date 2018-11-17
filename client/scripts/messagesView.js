@@ -28,6 +28,7 @@ var MessagesView = {
         if (cleanRoomName === $('#room-select').val() || 'allroomchat' === $('#room-select').val()) {
           if ($('#friendlist').val() === Friends.shortfriendname(obj) || $('#friendlist').val() === 'allfriends') {
             if ($(`#${obj.objectId}`).length === 0) {
+              obj.createdAt = moment(obj.createdAt).fromNow();
               let $nextchat = $(MessageView.render(obj));
               //$('#chats').prepend(MessageView.render(obj));
               $('#chats').prepend($nextchat);

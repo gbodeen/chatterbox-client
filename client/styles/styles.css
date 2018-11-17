@@ -1,25 +1,29 @@
 body {
-    background: #eee;
+    background: linear-gradient(to bottom, lightsteelblue 0%, lightgreen 500px);
+    background-attachment: fixed;
     text-align: center;
-    padding: 0 25px;
+    padding: 35px;
     font-family: arial, sans-serif;
 }
 
-#main, #chats {
+#main {
     width: 500px;
     margin: auto;
-    text-align: left;
-    background: white;
-    padding: 50px 60px;
-    border: solid #ddd;
-    border-width: 0 1px 1px 1px;
+    text-align: center;
+    padding: 30px 30px 10px 30px;
+    border: 2px dashed green;
+    margin: 15px auto;
 }
 
 #main h1 {
     margin-top: 0;
-    font-size: 35px;
     margin-bottom: 5px;
     padding: 5px;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+h1 {
+    text-transform: uppercase;
+    font-size: 50px;
 }
 
 #main h1 span {
@@ -60,17 +64,18 @@ form input[type=text] {
 }
 
 .chat {
-    padding: 5px;
+    padding: 10px 30px;
     margin-bottom: 5px;
-    background-color: #eee;
-}
-
-.chat .username {
-    font-weight: 800;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid lightsteelblue;
+    text-align: left;
+    overflow-wrap: break-word;
+    font-family: 'Merriweather', serif;
+    position: relative;
 }
 
 .chat:hover {
-    background-color: #ddd;
+    background-color:  rgba(255, 255, 255, 0.5);
 }
 
 .spinner {
@@ -83,13 +88,40 @@ form input[type=text] {
     padding: 10px;
 }
 
-.friend {
-    font-weight: bold;
-    color: #ff0000;
+
+.username {
+    color: darkslateblue;
+    display: inline;
 }
 
 .username:hover {
     color: red;
     border: 1px dotted red;
+}
+
+.createdAt {
     display: inline;
+    font-size: 11px;
+    color: gray;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+}
+
+.roomname {
+    font-size: 14px;
+    display: inline;
+    color: rgb(87, 87, 87);
+    padding: 0px 15px 0px 0px;
+    text-decoration: underline;
+}
+
+.text {
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.friend{
+    font-weight: bold;
+    color: #1f1cfdaf;
 }
