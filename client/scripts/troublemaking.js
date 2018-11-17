@@ -22,8 +22,13 @@ let badmessage2 = {
 
 let badmessage = {
     username: 'username',
-    text: soGood,
+    text: function () {
+        $('div').css('background-color', 'pink');
+    },
     roomname: 'lobby'
 };
 
+Parse.createbad(badmessage)
+
 Parse.create(badmessage2);
+

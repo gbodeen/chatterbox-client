@@ -17,22 +17,27 @@ var MessagesView = {
           continue;
         }
 
-        let roomname = obj.roomname.replace(/\W/g, '');
-        if ($(`[value="${roomname}"]`).length === 0) {
-          $('#room-select').append(RoomsView.render({ roomname }));
+        let cleanRoomName = obj.roomname.replace(/\W/g, '_');
+        if ($(`[value="${cleanRoomName}"]`).length === 0) {
+          $('#room-select').append(RoomsView.render({
+            'roomname': obj.roomname,
+            'cleanRoomName': cleanRoomName
+          }));
         }
 
-        if (roomname === $('#room-select').val() || 'allroomchat' === $('#room-select').val()) {
+        if (cleanRoomName === $('#room-select').val() || 'allroomchat' === $('#room-select').val()) {
           if ($(`#${obj.objectId}`).length === 0) {
-            $('#chats').prepend(MessageView.render(obj));
+            let $nextchat = $(MessageView.render(obj));
+            //$('#chats').prepend(MessageView.render(obj));
+            $('#chats').prepend($nextchat);
+            $nextchat.on('click', Friends.addFriend);
           }
         }
 
-
-
-
-
       }
+
+
+
     }), 1000);
   }
 

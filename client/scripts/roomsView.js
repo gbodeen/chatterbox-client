@@ -14,6 +14,7 @@ var RoomsView = {
 
   addRoomClick: function (event) {
     let roomName = prompt('Which room?', 'a room with no moose');
+    roomName = roomName.replace(/ /g, '_');
     // add a room with that name to the dropdown menu
     // also check if that room already exists
     if ($(`[value="${roomName}"]`).length === 0) {
@@ -22,7 +23,8 @@ var RoomsView = {
       console.log(`Room: ${roomName} already exists.`);
     }
     // "switch to that room" i.e. show tweets from that room
-    $(`[value="${roomName}"]`).attr('selected', 'true');
+    $(`[value="${roomName}"]`).attr('selected', 'selected');
+    $('.chat').remove();
   },
 
   selectRoom: function (event) {
@@ -40,7 +42,7 @@ var RoomsView = {
   },
 
   render: _.template(`
-    <option value="<%- roomname %>"><%- roomname %></option>
+    <option value="<%- cleanRoomName %>"><%- roomname %></option>
   `)
 
 
